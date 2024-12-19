@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+  // Select all dropdown toggle elements
+  const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+
+  dropdownToggles.forEach((toggle) => {
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // Find the dropdown menu and arrow
+      const dropdownMenu = toggle.nextElementSibling;
+      const arrow = toggle.querySelector(".arrow");
+
+      // Toggle visibility of the dropdown menu
+      if (dropdownMenu.style.display === "block") {
+        dropdownMenu.style.display = "none";
+        arrow.classList.remove("rotate");
+      } else {
+        dropdownMenu.style.display = "block";
+        arrow.classList.add("rotate");
+      }
+
+      // Close other open dropdowns
+      document.querySelectorAll(".dropdown-menu").forEach((menu) => {
+        if (menu !== dropdownMenu) {
+          menu.style.display = "none";
+          const otherArrow = menu.previousElementSibling.querySelector(".arrow");
+          otherArrow.classList.remove("rotate");
+        }
+      });
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".dropdown")) {
+      document.querySelectorAll(".dropdown-menu").forEach((menu) => {
+        menu.style.display = "none";
+        const arrow = menu.previousElementSibling.querySelector(".arrow");
+        arrow.classList.remove("rotate");
+      });
+    }
+  });
+});
+
+    </script>
+</head>
+<body>
+    
+    <header>
+        
+    
+
+<div class="hero">
+        <nav>
+            
+            <label class="logo">snap</label>
+            <ul class="sidebar">
+                <li onclick=hidesidebar()><a href="#"><svg width="23" height="23" xmlns="http://www.w3.org/2000/svg"><g fill="#151515" fill-rule="evenodd"><path d="m2.393.98 22.628 22.628-1.414 1.414L.979 2.395z"/><path d="M.98 23.607 23.609.979l1.414 1.414L2.395 25.021z"/></g></svg></a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Company</a></li>
+                <li><a href="#">Carrers</a></li>
+                <li><a href="#">About</a></li>     
+            </ul>
+
+            <ul class="menu">
+
+                <li class="dropdown"><a href="#" class="dropdown-toggle">Features<span class="arrow">
+                    &#x25BE;</span></a>
+                <ul class="dropdown-menu">
+                   <li><a href="#">
+                    <img src="images/icon-todo.svg" alt="Todo List icon" class="menu-icon">
+
+                    Todo List</a></li>
+                    <li><a href="#">
+                        <img src="images/icon-calendar.svg" alt="calendar icon" class="menu-icon">
+                        Calendar
+                    </a></li>
+                    <li><a href="#">
+                        <img src="images/icon-reminders.svg" alt="reminder icon" class="menu-icon">
+                        Reminders</a></li>
+                        <li><a href="#">
+                           <img src="images/icon-planning.svg" alt="Planning icon" class="menu-icon"> 
+                            Planning</a></li>
+                </ul>
+                </li> 
+
+                <li class="dropdown"><a href="#" class="dropdown-toggle">Company <span class="arrow">&#x25BE;</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">History</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+                </li>
+
+                 <li><a href="#">Carrers</a></li>
+                 <li><a href="#">About</a></li>    
+             </ul>
+             
+                  <div class="action">
+             <a href="#" class="login-btn">login</a>
+                    <button class="btn" onclick="
+                    alert('processing....');
+                    alert('done');">Register</button>
+                </div>
+
+                <ul>
+     <li onclick=showsidebar()><a href="#"><svg width="30" height="18" xmlns="http://www.w3.org/2000/svg"><g fill="#151515" fill-rule="evenodd"><path d="M0 0h32v2H0zM0 8h32v2H0zM0 16h32v2H0z"/></g></svg></a></li>     
+                </ul>
+        </nav>
+    </header>
+
+        <main>
+        <section class="hero">
+            <div class="hero-content">
+            <h1>
+                Make<br>remote work
+            </h1>
+            <p>
+                Get your team in sync, not matter your location.<br>
+                streamline processes, create team rituals, and<br>
+                watch productivity soar.
+            </p>
+            <button class="learn-more-btn">Learn more</button>
+        </div>
+
+
+<img src="images/image-hero-desktop.png" class="feature-image">
+        </section>
+        </main>
+
+       
+          <section class="logos">
+            <img src="images/client-databiz.svg" alt="Databiz">
+            <img src="images/client-audiophile.svg" alt="Audipphile">
+            <img src="images/client-maker.svg" alt="maker">
+            <img src="images/client-meet.svg" alt="meet">
+          </section>  
+
+          <script>
+            function showsidebar (){
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'flex'
+            }
+
+            function hidesidebar(){
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'none'
+            }
+          </script>
+
+       
+</body>
+</html>
